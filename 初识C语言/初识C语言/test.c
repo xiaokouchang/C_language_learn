@@ -1,5 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS 1 
-
 //C语言规定
 //main函数为程序的入口,main函数有且仅有一个
 //main函数在一个工程中只能有一个

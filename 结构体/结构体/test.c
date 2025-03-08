@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1 
+#define _CRT_SECURE_NO_WARNINGS 1
 
 //结构体
 //结构是一些值的集合,这些值称为成员变量。
