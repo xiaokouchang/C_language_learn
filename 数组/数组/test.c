@@ -11,7 +11,7 @@
 //#include<stdio.h>
 //int main()
 //{
-//	int math[20];
+//	int arr[20];
 //	char ch[8];
 //	return 0;
 //}
@@ -159,10 +159,8 @@
 //⼆维数组呢语法如下：
 //type arr_name[常量值1][常量值2]
 
-
 //arr[i] == *(arr + i)
 //&arr[i] == arr + i
-
 
 //二维数组的创建
 //#include<stdio.h>
@@ -204,30 +202,22 @@
 //int main()
 //{
 //	int arr[3][5] = { 1,2,3,4,5, 2,3,4,5,6, 3,4,5,6,7 };//数组是3行5列
-//	//1 2 3 4 5
-//	//2 3 4 5 6
-//	//3 4 5 6 7
 //	int i = 0;
-//	//输入数据
+//	int num = 1;
 //	for (i = 0;i < 3;i++)
 //	{
 //		int j = 0;
 //		for (j = 0;j < 5;j++)
 //		{
-//			scanf("%d", &arr[i][j]);
+//			arr[i][j] = num++;
 //		}
-//		printf("\n");
 //	}
-//	//输出数据
-//	for (i = 0;i < 3;i++)
+//	int* p = &arr[0][0];
+//	for (i = 0;i < 15;i++)
 //	{
-//		int j = 0;
-//		for (j = 0;j < 5;j++)
-//		{
-//			printf("%d ", arr[i][j]);
-//		}
-//		printf("\n");
+//		printf("%d ", *(p + i));
 //	}
+//	printf("\n");
 //	return 0;
 //}
 
@@ -245,6 +235,46 @@
 //		for (j = 0;j < 5;j++)
 //		{
 //			printf("arr[%d][%d] = %p\n",i,j,&arr[i][j]);
+//		}
+//	}
+//	/*for (i = 0;i < 3;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < 5;j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//	}
+//	printf("\n");
+//
+//	int* p = &arr[0][0];
+//	for (i = 0;i < 12;i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}*/
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[3][5];
+//	int i = 0;
+//	for (i = 0;i < 3;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < 5;j++)
+//		{
+//			arr[i][j] = 1;
+//		}
+//	}
+//	for (i = 0;i < 3;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < 5;j++)
+//		{
+//			printf("arr[%d][%d] = %p\n", i, j, &arr[i][j]);
 //		}
 //	}
 //	return 0;
@@ -405,10 +435,11 @@
 //{
 //	int i = 0;
 //	int j = 0;
+//  //一次冒泡排序
 //	for (j = 0;j < x - 1;j++)
 //	{
 //		//一次冒泡排序,进行多少对比较
-//		for (i = 0;i < x-1-j;i++)
+//		for (i = 0;i < x - 1 - j;i++)
 //		{
 //			if (arr[i] > arr[i + 1])
 //			{
