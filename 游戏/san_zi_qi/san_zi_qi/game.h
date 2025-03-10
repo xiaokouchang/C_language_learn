@@ -22,5 +22,5 @@ void computer_move(char board[ROW][COL], int row, int col);
 //≈–∂œ ‰”Æ
 char is_win(char board[ROW][COL], int row, int col);
 
-////≈–∂œ∆Ωæ÷
-//char is_full(char board[ROW][COL], int row, int col);
+//≈–∂œ∆Ωæ÷
+int is_full(char board[ROW][COL], int row, int col);

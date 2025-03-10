@@ -508,33 +508,41 @@
 //}
 
 
-//#include<stdio.h>
-//void sort(int arr[], int sz)
-//{
-//	int i = 0;
-//	int j = 0;
-//	for (i = 0;i < sz - 1;i++)//进行sz - 1次比较
-//	{
-//		for (j = 0;j < sz - 1 - i;j++)//进行sz - 1 - i已经排好的数
-//		{
-//			if (arr[j] > arr[j + 1])
-//			{
-//				arr[j] = arr[j] + arr[j + 1];
-//				arr[j + 1] = arr[j] - arr[j + 1];
-//				arr[j] = arr[j] - arr[j + 1];
-//			}
-//		}
-//	}
-//}
-//int main()
-//{
-//	int arr[] = { 2,5,3,4,7,9,1,6,10,8 };
-//	int sz = sizeof(arr) / sizeof(arr[0]);
-//	int i = 0;
-//	sort(arr, sz);
-//	for (i = 0;i < sz;i++)
-//	{
-//		printf("%d ",arr[i]);
-//	}
-//	return 0;
-//}
+#include<stdio.h>
+#include<string.h>
+void sort(int arr[], int sz)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0;i < sz - 1;i++)//进行sz - 1次比较
+	{
+		for (j = 0;j < sz - 1 - i;j++)//进行sz - 1 - i已经排好的数
+		{
+			if (arr[j] < arr[j + 1])
+			{
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
+int main()
+{
+	int num = 0;
+	scanf("%d", &num);
+	int arr[100];
+	memset(arr, 0, sizeof(arr));
+	int i = 0;
+	for (i = 0;i < num;i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	int sz = num;
+	sort(arr, sz);
+	for (i = 0;i < sz;i++)
+	{
+		printf("%d ",arr[i]);
+	}
+	return 0;
+}
