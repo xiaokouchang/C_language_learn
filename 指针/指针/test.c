@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1 
+#define _CRT_SECURE_NO_WARNINGS 1
 //内存 --- 电脑上的存储设备
 //程序运行时会加载到内存中,会使用内存空间
 //指针是内存中一个最小单元的编号,也就是地址
@@ -10,7 +10,7 @@
 //int main()
 //{
 //	int a = 10;//&a取出a的第一个字节的地址(较小的地址)
-//	int* pa = &a;//pa --- 指针变量
+//	int* pa = &a;//pa --- 指针变量 --- 用来存放地址的变量
 //	printf("%p\n", &a);
 //	printf("%p\n", pa);
 //	*pa = 20;
@@ -19,8 +19,8 @@
 //}
 
 
-//指针类型决定解引用操作时一次访问几个字节
-//char* ---- 1 
+//指针类型决定解引用操作时一次访问几个字节,访问权限的大小
+//char* ---- 1
 //int*  ---- 4
 //float*---- 4
 //#include<stdio.h>
@@ -39,25 +39,24 @@
 //指针类型决定指针的步长(指针+1 --- 跳过几个字节)
 //指针的类型决定了指针向前或者向后走一步有多大(距离)
 //char* ---- 1 
-//int*  ---- 4
+//int*  ---- 一次访问4个字节,+1跳过4个字节
 //float*---- 4
 //#include<stdio.h>
 //int main()
 //{
 //	int a = 0x11223344;
 //	int* pa = &a;
-//	char* pc = &a;
+//	char* pc = (char*) &a;
 //	printf("%p\n", pa);
-//	printf("%p\n", pa+1);//跳过4个字节
+//	printf("%p\n", pa + 1);//跳过4个字节
 //	printf("%p\n", pc);
-//	printf("%p\n", pc+1);//跳过1个字节
+//	printf("%p\n", pc + 1);//跳过1个字节
 //	return 0;
 //}
 
 
-//p+4向高地址走,p-4向低地址走
+//p + 4向高地址走,p - 4向低地址走
 //#include<stdio.h>
-//
 //int main()
 //{
 //	int a = 0x11223344;
@@ -66,7 +65,7 @@
 //	for (i = 0;i < 4;i++)
 //	{
 //		*pc = 0;
-//		pc++;
+//		pc++;//pc向右移动
 //	}
 //	printf("%d\n", a);
 //	return 0;
@@ -115,7 +114,18 @@
 //	int *p = test();
 //	printf("hehe\n");//函数栈帧被破坏
 //	printf("%d\n", *p);
+//	//printf("hehe\n");//函数栈帧被破坏
 //	return 0;
+//}
+
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;
+//	printf("hehe\n");
+//	printf("%d\n", *pa);
 //}
 
 
@@ -139,7 +149,7 @@
 //}
 
 
-//指针+-整数；指针的关系运算
+//指针+-整数;指针的关系运算
 //#include<stdio.h>
 //#define N_VALUES 5
 //int main()
@@ -150,19 +160,10 @@
 //	{
 //		*vp++ = 0;
 //	}
-//	printf("%f\n", vp);
 //	return 0;
 //}
 
-//#include<stdio.h>
-//
-//int my_strlen(char* s)
-//{
-//	char* p = s;
-//	while (*p != '\0')
-//		p++;
-//	return p - s;
-//}
+
 
 
 //指针-指针
@@ -173,8 +174,8 @@
 //{
 //	char ch[5] = { 0 };
 //	int arr[10] = { 0 };
-//	printf("%d\n", &arr[0] - &arr[9]);
-//	printf("%d\n", &arr[0] - &ch[4]);//代码错误,两个指针要指向同一块空间
+//	printf("%d\n", &arr[9] - &arr[0]);
+//	//printf("%d\n", &arr[0] - &ch[4]);//代码错误,两个指针要指向同一块空间
 //	return 0;
 //}
 
@@ -193,8 +194,41 @@
 
 //函数
 //求字符串长度是在统计'\0'之前的字符
+//1.计数器
+//2.递归
 //#include<stdio.h>
-//
+//#include<string.h>
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int len = strlen(arr);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+
+//指针-指针
+//#include<stdio.h>
+//int* my_strlen(char* s)
+//{
+//	char* start = s;
+//	while (*start != '\0')
+//	{
+//		start++;
+//	}
+//	return start - s;
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int len = my_strlen(arr);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+
+//计数器
+//#include<stdio.h>
 //int my_strlen(char* str)
 //{
 //	int count = 0;
@@ -204,7 +238,6 @@
 //		str++;
 //	}
 //	return count;
-//
 //}
 //int main()
 //{
@@ -215,26 +248,10 @@
 //}
 
 
-//#include<stdio.h>
-//
-//int my_strlen(char* str)
-//{
-//	char* start = str;//不能使用int*
-//	while (*str != '\0')
-//	{
-//		str++;
-//	}
-//	return str - start;
-//}
-//int main()
-//{
-//	char arr[] = "abcdef";
-//	int len = my_strlen(arr);
-//	printf("%d\n", len);
-//	return 0;
-//}
-
-
+//允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较
+//不允许与指向第一个元素之前的那个内存位置的指针进行比较
+//建议指针向后越界
+//超出范围,但是没有访问
 //#include<stdio.h>
 //#define N_VALUES 5
 //int main()
@@ -249,10 +266,6 @@
 //}
 
 
-//允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较,
-//不允许与指向第一个元素之前的那个内存位置的指针进行比较
-//建议指针向后越界
-//超出范围,但是没有访问
 //#include<stdio.h>
 //#define N_VALUES 5
 //int main()
@@ -268,12 +281,14 @@
 
 
 //指针和数组
-//指针和数组是不同的对象,存放地址的,大小4/8字节
-//数组是一组相同类型元素的集合
+//指针和数组是不同的对象
+//指针是一种变量,存放地址的,大小4/8字节
+//数组是一组相同类型元素的集合,是可以放多个元素的,大小是取决于元素个数和元素类型
 //数组的数组名是数组首元素的地址,地址是可以放在指针变量中的
 //可以通过数组访问指针
 //arr[i] == *(arr + i) == i[arr] == *(i + arr)
 //[]是个操作符,arr和i是[]的操作数,交换律
+//第一种方法
 //#include<stdio.h>
 //int main()
 //{
@@ -281,12 +296,14 @@
 //	int *p = arr;
 //	int i = 0;
 //	int sz = sizeof(arr) / sizeof(arr[0]);
+//	//赋值
 //	for (i = 0;i < sz;i++)
 //	{
 //		*p = i + 1;
 //		p++;
 //	}
 //	p = arr;
+//	//输出
 //	for (i = 0;i < sz;i++)
 //	{
 //		printf("%d ", *p);
@@ -296,10 +313,57 @@
 //}
 
 
+//第二种方法
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int* p = arr;
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	//赋值
+//	for (i = 0;i < sz;i++)
+//	{
+//		*p++ = i + 1;
+//	}
+//	p = arr;
+//	//输出
+//	for (i = 0;i < sz;i++)
+//	{
+//		printf("%d ", *p++);
+//	}
+//	return 0;
+//}
+
+
+//第三种方法
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int* p = arr;
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	//赋值
+//	for (i = 0;i < sz;i++)
+//	{
+//		*(p + i) = i + 1;//p不发生变化,i变化
+//	}
+//	//输出
+//	for (i = 0;i < sz;i++)
+//	{
+//		//printf("%d ", *(p + i));
+//		//printf("%d ", *(arr + i));
+//		//printf("%d ", *(i + arr));
+//		printf("%d ", i[arr]);
+//	}
+//	return 0;
+//}
+
+
 //二级指针
 //存放一级指针变量的地址
 //#include<stdio.h>
-//
 //int main()
 //{
 //	int a = 10;
@@ -540,42 +604,42 @@
 //}
 
 
-#include<stdio.h>
-void print1(int arr[3][4], int r, int c)
-{
-	int i = 0;
-	for (i = 0;i < r;i++)
-	{
-		int j = 0;
-		for (j = 0;j < c;j++)
-		{
-			printf("%d ", arr[i][j]);
-		}
-		printf("\n");
-	}
-}
-void print2(int (*p)[4], int r, int c)
-{
-	int i = 0;
-	for (i = 0;i < r;i++)
-	{
-		int j = 0;
-		for (j = 0;j < c;j++)
-		{
-			//printf("%d ", (*p)[j]+i);
-			//printf("%d ", (*(p + i))[j]);
-			printf("%d ", p[i][j]);
-		}
-		printf("\n");
-	}
-}
-int main()
-{
-	int arr[3][4] = { {1,2,3,4},{2,3,4,5},{3,4,5,6} };
-	//print1(arr, 3, 4);
-	print2(arr, 3, 4);
-	return 0;
-}
+//#include<stdio.h>
+//void print1(int arr[3][4], int r, int c)
+//{
+//	int i = 0;
+//	for (i = 0;i < r;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < c;j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//void print2(int (*p)[4], int r, int c)
+//{
+//	int i = 0;
+//	for (i = 0;i < r;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < c;j++)
+//		{
+//			//printf("%d ", (*p)[j]+i);
+//			//printf("%d ", (*(p + i))[j]);
+//			printf("%d ", p[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int arr[3][4] = { {1,2,3,4},{2,3,4,5},{3,4,5,6} };
+//	//print1(arr, 3, 4);
+//	print2(arr, 3, 4);
+//	return 0;
+//}
 
 
 //*p = arr = *&arr
