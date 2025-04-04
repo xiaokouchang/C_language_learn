@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
 //结构体
-//结构是一些值的集合,这些值称为成员变量。
+//结构是一些值的集合,这些值称为成员变量
 //结构的每个成员可以是不同类型的变量
 //结构体的声明
 //struct tag
@@ -26,6 +25,7 @@
 
 //结构体变量初始化
 //#include<stdio.h>
+////类型
 //struct stu
 //{
 //	char name[20];
@@ -33,9 +33,33 @@
 //	char sex[10];
 //	float score;
 //};
+////变量
 //int main()
 //{
 //	struct stu s1 = { "zhangsan",20,"nan",95.5f};
+//	struct stu s2 = { "lisi",22,"girl",80.2f };
+//	struct stu s3 = { "xiaohong",30,"girl",95.4f };
+//	printf("%s %d %s %f\n", s1.name, s1.age, s1.sex, s1.score);
+//	printf("%s %d %s %f\n", s2.name, s2.age, s2.sex, s2.score);
+//	printf("%s %d %s %f\n", s3.name, s3.age, s3.sex, s3.score);
+//	return 0;
+//}
+
+
+////可以放在主函数里面
+//#include<stdio.h>
+////变量
+//int main()
+//{
+//	//类型
+//	struct stu
+//	{
+//		char name[20];
+//		int age;
+//		char sex[10];
+//		float score;
+//	};
+//	struct stu s1 = { "zhangsan",20,"nan",95.5f };
 //	struct stu s2 = { "lisi",22,"girl",80.2f };
 //	struct stu s3 = { "xiaohong",30,"girl",95.4f };
 //	printf("%s %d %s %f\n", s1.name, s1.age, s1.sex, s1.score);
@@ -93,12 +117,6 @@
 //	int a;
 //	char c;
 //};
-//struct b
-//{
-//	double d;
-//	struct S s;
-//	float f;
-//};
 //struct P
 //{
 //	double d;
@@ -112,5 +130,3 @@
 //	printf("%lf %d %c %f\n", p.d, p.s.a, p.s.c, p.f);
 //	return 0;
 //}
-
-
