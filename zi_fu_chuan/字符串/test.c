@@ -83,13 +83,14 @@
 //{
 //	const char* str1 = "abcdef";
 //	const char* str2 = "bbb";
-//	if (strlen(str2) - strlen(str1) > 0)//3 - 6 == -3,是无符号数
+//	//3 - 6 == -3,是无符号数,没有负数,else语句永远不执行
+//	if (strlen(str2) - strlen(str1) > 0)
 //	{
-//		printf("str2>str1\n");
+//		printf("str2 > str1\n");
 //	}
 //	else
 //	{
-//		printf("srt1>str2\n");
+//		printf("srt1 > str2\n");
 //	}
 //	return 0;
 //}
@@ -732,10 +733,303 @@
 //}
 
 
+//根据上次的地址切割
+//第一种写法
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+//int main()
+//{
+//	char arr[] = "zxcv@yas.net";
+//	char* p = "@.";
+//	char buf[20] = { 0 };
+//	strcpy(buf, arr);
+//	char* pa = strtok(buf, p);
+//	printf("%s\n", pa);
+//	pa = strtok(NULL, p);
+//	printf("%s\n", pa);
+//	pa = strtok(NULL, p);
+//	printf("%s\n", pa);
+//	return 0;
+//}
+
+
+//使用循环
 //#include<stdio.h>
 //#include<string.h>
 //int main()
 //{
 //	char arr[] = "zxcv@yas.net";
+//	char* p = "@.";
+//	char buf[20] = { 0 };
+//	strcpy(buf, arr);
+//	char* ret = NULL;
+//	for (ret = strtok(buf, p);ret != NULL;ret = strtok(NULL, p))
+//	{
+//		printf("%s\n", ret);
+//	}
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr[] = "192.168.120.85";
+//	char* p = "2";
+//	char buf[20] = { 0 };
+//	strcpy(buf, arr);
+//	char* ret = NULL;
+//	for (ret = strtok(buf, p);ret != NULL;ret = strtok(NULL, p))
+//	{
+//		printf("%s\n", ret);
+//	}
+//	return 0;
+//}
+
+
+//strerror
+//返回错误码,所对应的错误信息
+//char* strerror(int errnum);
+//C语言的库函数在运行的时候,如果发生错误,会将错误码存在一个变量中,这个变量是errno
+//错误码是一些数字
+//需要将错误码翻译成错误信息
+//返回首字符的地址
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	printf("strerror(0) = %s\n", strerror(0));
+//	printf("strerror(1) = %s\n", strerror(1));
+//	printf("strerror(2) = %s\n", strerror(2));
+//	printf("strerror(3) = %s\n", strerror(3));
+//	printf("strerror(4) = %s\n", strerror(4));
+//	printf("strerror(5) = %s\n", strerror(5));
+//	printf("strerror(6) = %s\n", strerror(6));
+//	return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <string.h>
+//#include <errno.h>
+//int main()
+//{
+//	FILE* pa = fopen("test.txt", "r");
+//	if (pa == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//		return 1;
+//	}
+//	fclose(pa);
+//	return 0;
+//}
+
+
+//perror
+//perror是直接打印错误信息,在打印错误信息前会先打印自定义的信息
+//perror = printf + strerror
+//#include <stdio.h>
+//#include <string.h>
+//#include <errno.h>
+//int main()
+//{
+//	FILE* pa = fopen("test.txt", "r");
+//	if (pa == NULL)
+//	{
+//		//printf("%s\n", strerror(errno));
+//		perror("pa");
+//		return 1;
+//	}
+//	fclose(pa);
+//}
+
+
+//iscntrl 任何控制字符
+//isspace 空白字符""空格,换页'\f',换行'\n',回车'\r',制表符'\t'或者垂直制表符'\v'
+//isdigit 十进制数字0~9
+//isxdigit 十六进制数字,包括所有十进制数字,小写字母a~f,大写字母A~F
+//islower 小写字母a~z
+//isupper 大写字母A~Z
+//isalpha 字母a~z或A~Z
+//isalnum 字母或者数字,a~z,A~Z,0~9
+//ispunct 标点符号,任何不属于数字或者字母的图形字符(可打印)
+//isgraph 任何图形字符
+//isprint 任何可打印字符,包括图形字符和空白字符
+//int tolower(int c);   大写字母转小写字母
+//int toupper(int c);   小写字母转大写字母
+//#include<stdio.h>
+//#include<ctype.h>
+//int main()
+//{
+//	//int ret = islower('1');
+//	//int ret = isdigit('1');
+//	char arr[10] = { 'a' };
+//	//int ret = isdigit(arr[0]);
+//	char ret = toupper(arr[0]);
+//	printf("%c\n", ret);
+//	return 0;
+//}
+
+
+//大小写转换
+//#include<stdio.h>
+//#include<string.h>
+//#include<ctype.h>
+//int main()
+//{
+//	char arr1[] = "I have An apple.";
+//	char arr2[20] = { 0 };
+//	strcpy(arr2, arr1);
+//	int ret = strlen(arr2);
+//	int i = 0;
+//	for (i = 0;i < ret;i++)
+//	{
+//		if (isupper(arr2[i]))
+//		{
+//			arr2[i] = tolower(arr2[i]);
+//		}
+//		else
+//		{
+//			arr2[i] = toupper(arr2[i]);
+//		}
+//	}
+//	printf("%s\n", arr1);
+//	printf("%s\n", arr2);
+//	return 0;
+//}
+
+
+//memcpy --- 内存拷贝函数
+//#include<stdio.h>
+//#include<assert.h>
+//#include<string.h>
+//void* my_memcpy(void* dest, const void* src, size_t num)
+//{
+//	assert(dest && src);
+//	//方法1
+//	void* ret = dest;
+//	char* m = (char*)dest;
+//	char* n = (const char*)src;
+//	while (num--)
+//	{
+//		*m = *n;
+//		m++;
+//		n++;
+//	}
+//	//方法2
+//	//while (num--)
+//	//{
+//	//	*(char*)dest = *(char*)src;
+//	//	dest = (char*)dest + 1;
+//	//	src = (char*)src + 1;
+//	//}
+//	return(ret);
+//}
+//int main()
+//{
+//	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int arr2[10] = { 0 };
+//	int num = 1;
+//	int i = 0;
+//	for (i = 0;i < 10;i++)
+//	{
+//		int j = 0;
+//		my_memcpy(arr2, arr1, num * sizeof(arr1[0]));
+//		for (j = 0;j < num;j++)
+//		{
+//			printf("%2d ", arr2[j]);
+//		}
+//		num++;
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+//重叠
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
+//int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//void* my_memmove(void* dest, const void* src, size_t num)
+//{
+//	assert(dest && src);
+//	if (dest < src)
+//	{
+//		char* m = dest;
+//		const char* n = src;
+//		while (num--)
+//		{
+//			*m = *n;
+//			m++;
+//			n++;
+//		}
+//	}
+//	else
+//	{
+//		char* m = (char*)dest + num - 1;
+//		const char* n = (char*)src + num - 1;
+//		while (num > 0)
+//		{
+//			*m = *n;
+//			m--;
+//			n--;
+//			num--;
+//		}
+//	}
+//}
+////1 2 3 4 5 6 7 8 9 10
+////3 4 5 6 7
+////3 4 5 6 7 6 7 8 9 10
+////1 2 3 4 3 4 5 6 7 10
+//int main()
+//{
+//	int num = 0;
+//	int i = 0;
+//	my_memmove(arr, arr + 2, 5 * sizeof(arr[0]));
+//	//memmove(arr + 2, arr, 5 * sizeof(arr[0]));
+//	for (i = 0;i < 10;i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+
+//memcmp
+//比较从ptr1和ptr2指针开始的num个字节
+//int memcmp(const void* ptr1,const void* ptr2,size_t num);
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	int arr1[] = { 1,2,3 };//01 00 00 00 02 00 00 00 03 00 00 00
+//	int arr2[] = { 1,2,5 };//01 00 00 00 02 00 00 00 05 00 00 00
+//	int ret = memcmp(arr1, arr2, 9);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+
+//memset
+//以字节为单位来设置内存中的函数
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	char arr1[] = "Hello world!";
+//	memset(arr1 + 6, 'y', 5);
+//	//printf("%s\n", arr);
+//	int arr[10] = { 0 };
+//	memset(arr, 0, 40);
+//	int i = 0;
+//	for (i = 0;i < 10;i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
 //	return 0;
 //}
