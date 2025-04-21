@@ -130,3 +130,214 @@
 //	printf("%lf %d %c %f\n", p.d, p.s.a, p.s.c, p.f);
 //	return 0;
 //}
+
+
+//#include<stdio.h>
+//struct stu
+//{
+//	char name[20];
+//	int age;
+//}s1, s2;//全局变量,s1和s2是两个结构体变量
+//int main()
+//{
+//	struct stu s3, s4;//局部变量
+//	return 0;
+//}
+
+
+//重命名
+//#include<stdio.h>
+//typedef struct stu
+//{
+//	char name[20];
+//	int age;
+//}Stu;//全局变量,s1和s2是两个结构体变量
+//int main()
+//{
+//	struct stu s3, s4;//局部变量
+//	Stu s2, s3;//局部变量
+//	return 0;
+//}
+
+
+//匿名结构体类型 --- 没有名字
+//不完全声明
+//#include<stdio.h>
+//struct
+//{
+//	char name[20];
+//	int age;
+//}x;
+
+
+//不正确
+//#include<stdio.h>
+//struct
+//{
+//	int a;
+//	char c;
+//	double d;
+//}x;
+//struct
+//{
+//	int a;
+//	char c;
+//	double d;
+//}*p;
+//int main()
+//{
+//	p = &x;
+//	return 0;
+//}
+
+
+//结构的自引用
+//同类型的下一个结点
+//链表
+//数据结构 --- 数据在内存中存储的结构
+//#include<stdio.h>
+//struct Node
+//{
+//	int data;
+//	struct Node* next;
+//};
+
+
+//#include<stdio.h>
+////可以重命名
+//typedef struct Node
+//{
+//	int data;
+//	struct Node* next;
+//}Node;
+//int main()
+//{
+//	struct Node n1;
+//	struct Node n2;
+//	n1.next = &n2;
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//struct Point
+//{
+//	int x;
+//	int y;
+//}p1 = { 10,20 };
+//struct Point p2 = { 0,0 };
+//struct S
+//{
+//	int num;
+//	char ch;
+//	struct Point p;
+//	float d;
+//};
+//int main()
+//{
+//	struct Point p3 = { 1,2 };
+//	struct S s = { 100,'w',{2,3},3.14f };
+//	struct S s2 = { .d = 1.2f,.p.x = 3,.p.y = 5,.ch = 'w',.num = 200 };
+//	printf("%d %c %d %d %.2f\n", s.num, s.ch, s.p.x, s.p.y, s.d);
+//	printf("%d %c %d %d %.2f\n", s2.num, s2.ch, s2.p.x, s2.p.y, s2.d);
+//	return 0;
+//}
+
+
+//结构体内存对齐
+//结构体的对齐规则:
+//第一个成员在与结构体变量偏移量为0的地址处
+//其他成员变量要对齐到某个数字(对齐数)的整数倍的地址处
+//对齐数 = 编译器默认的一个对齐数与该成员大小的较小值
+//VS中默认的值为8
+//Linux gcc没有默认对齐数,对齐数是成员自身大小
+//结构体总大小为最大对齐数(每个成员变量都有一个对齐数)的整数倍
+//如果嵌套了结构体的情况,嵌套的结构体对齐到自己的最大对齐数的整数倍处
+//结构体的整体大小就是所有最大对齐数(含嵌套结构体的对齐数)的整数倍
+//为什么存在内存对齐
+//平台原因(移植原因):
+//不是所有的硬件平台都能访问任意地址上的任意数据的
+//某些硬件平台只能在某些地址处取某些特定类型的数据,否则抛出硬件异常
+//性能原因:
+//数据结构(尤其是栈)应该尽可能地在自然边界上对齐
+//为了访问未对齐的内存,处理器需要作两次内存访问;而对齐的内存访问仅需要一次访问
+//结构体的内存对齐是拿空间来换取时间的做法
+//#include<stdio.h>
+//#include<stddef.h>
+////offsetof --- 宏
+//struct s1
+//{
+//	//0
+//	//4
+//	//8
+//	//12
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//
+//struct s2
+//{
+//	char c1;
+//	char c2;
+//	int i;
+//	//0
+//	//1
+//	//4
+//	//8
+//};
+//struct s3
+//{
+//	//7
+//	//8
+//	//12
+//	//16
+//	double d;
+//	char c;
+//	int i;
+//};
+//struct s4
+//{
+//	//0
+//	//4
+//	//8
+//	float d;
+//	char c;
+//	int i;
+//};
+//struct s5
+//{
+//	//0
+//	//8
+//	//9
+//	//11
+//	//15
+//	//22
+//	//24
+//	char c1;
+//	struct s3 s3;
+//	double d;
+//};
+//int main()
+//{
+//	printf("%zd\n", sizeof(struct s1));
+//	printf("%zd\n", sizeof(struct s2));
+//	printf("%zd\n", sizeof(struct s3));
+//	printf("%zd\n", sizeof(struct s4));
+//	printf("%zd\n", sizeof(struct s5));
+//	printf("%zd\n", offsetof(struct s1, c1));
+//	printf("%zd\n", offsetof(struct s1, i));
+//	printf("%zd\n", offsetof(struct s1, c2));
+//	printf("%zd\n", offsetof(struct s2, c1));
+//	printf("%zd\n", offsetof(struct s2, c2));
+//	printf("%zd\n", offsetof(struct s2, i));
+//	printf("%zd\n", offsetof(struct s3, d));
+//	printf("%zd\n", offsetof(struct s3, c));
+//	printf("%zd\n", offsetof(struct s3, i));
+//	printf("%zd\n", offsetof(struct s4, d));
+//	printf("%zd\n", offsetof(struct s4, c));
+//	printf("%zd\n", offsetof(struct s4, i));
+//	return 0;
+//}
+
+
