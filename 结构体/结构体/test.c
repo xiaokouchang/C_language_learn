@@ -262,6 +262,7 @@
 //数据结构(尤其是栈)应该尽可能地在自然边界上对齐
 //为了访问未对齐的内存,处理器需要作两次内存访问;而对齐的内存访问仅需要一次访问
 //结构体的内存对齐是拿空间来换取时间的做法
+//在设计结构体的时候,我们既要满足对齐,又要节省空间,让占用空间小的成员尽量集中在一起。
 //#include<stdio.h>
 //#include<stddef.h>
 ////offsetof --- 宏
@@ -337,6 +338,59 @@
 //	printf("%zd\n", offsetof(struct s4, d));
 //	printf("%zd\n", offsetof(struct s4, c));
 //	printf("%zd\n", offsetof(struct s4, i));
+//	return 0;
+//}
+
+
+//修改默认对齐数
+//#include<stdio.h>
+//#include<stddef.h>
+//#pragma pack(1) // 修改默认对齐数为4
+//struct s1
+//{
+//	//0
+//	//4
+//	//5
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//#pragma pack() //恢复默认对齐数
+//int main()
+//{
+//	printf("%zd\n", sizeof(struct s1));
+//	printf("%zd\n", offsetof(struct s1, c1));
+//	printf("%zd\n", offsetof(struct s1, i));
+//	printf("%zd\n", offsetof(struct s1, c2));
+//	return 0;
+//}
+
+
+//结构体传参
+//函数传参的时候,参数是需要压栈,会有时间和空间上的系统开销
+//如果传递一个结构体对象的时候,结构体过大,参数压栈的的系统开销比较大,所以会导致性能的下降
+//结构体传参的时候,要传结构体的地址
+//#include<stdio.h>
+//typedef struct s1
+//{
+//	char a;
+//	char b;
+//	int c;
+//}s1;
+//void print1(s1 a)
+//{
+//	printf("%c %c %d\n", a.a, a.b, a.c);
+//}
+//void print2(s1* a)
+//{
+//	printf("%c %c %d\n", (*a).a, (*a).b, (*a).c);
+//	printf("%c %c %d\n", a->a, a->b, a->c);
+//}
+//int main()
+//{
+//	s1 a = { 'a','b',4 };
+//	print1(a);
+//	print2(&a);
 //	return 0;
 //}
 
