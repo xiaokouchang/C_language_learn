@@ -1,0 +1,38 @@
+﻿#pragma once
+#include <stdio.h>
+#include <string.h>
+#define MAX 100
+#define NAME_MAX 20
+#define SEX_MAX 5
+#define ADDR_MAX 30
+#define TELE_MAX 12
+//人的信息
+typedef struct PeoInfo
+{
+	char name[20];
+	int age;
+	char sex[5];
+	char addr[30];
+	char tele[12];
+}PeoInfo;
+
+
+//通讯录
+typedef struct contact
+{
+	PeoInfo data[MAX];//存放当前人的信息
+	int sz;//当前已经放的信息的总人数
+}contact;
+
+
+//通讯录初始化
+void Initcontact(contact* pc);
+
+//增加联系人
+void Addcontact(contact* pc);
+
+//显示通讯录
+void Showcontact(contact* pc);
+
+//删除通讯录
+void Delcontact(contact* pc);
