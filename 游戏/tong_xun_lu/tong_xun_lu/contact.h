@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
+
 #define MAX 100
 #define NAME_MAX 20
 #define SEX_MAX 5
@@ -24,7 +26,6 @@ typedef struct contact
 	int sz;//当前已经放的信息的总人数
 }contact;
 
-
 //通讯录初始化
 void Initcontact(contact* pc);
 
@@ -32,7 +33,19 @@ void Initcontact(contact* pc);
 void Addcontact(contact* pc);
 
 //显示通讯录
-void Showcontact(contact* pc);
+void Showcontact(const contact* pc);
 
 //删除通讯录
 void Delcontact(contact* pc);
+
+//查找联系人
+int find_by_name(const contact* pc,char name[MAX]);
+
+//查找联系人
+void SearchContact(const contact* pc);
+
+//修改联系人
+void Modifycontact(contact* pc);
+
+//排序
+void Sortcontact(contact* pc);
