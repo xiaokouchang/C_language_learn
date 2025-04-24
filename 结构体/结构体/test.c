@@ -23,6 +23,9 @@
 //}
 
 
+
+
+
 //结构体变量初始化
 //#include<stdio.h>
 ////类型
@@ -43,6 +46,20 @@
 //	printf("%s %d %s %f\n", s2.name, s2.age, s2.sex, s2.score);
 //	printf("%s %d %s %f\n", s3.name, s3.age, s3.sex, s3.score);
 //	return 0;
+//}
+
+
+//#include <stdio.h>
+//struct Student
+//{
+//    char name[50];
+//    int age;
+//    float score;
+//};
+//int main()
+//{
+//    struct Student stu2 = { .name = "Jerry", .age = 21, .score = 90.0 };
+//    return 0;
 //}
 
 
@@ -340,6 +357,86 @@
 //	printf("%zd\n", offsetof(struct s4, i));
 //	return 0;
 //}
+
+
+//#include<stdio.h>
+//#include<stddef.h>
+////offsetof --- 宏
+//struct s1
+//{
+//	//0
+//	//4
+//	//8
+//	//12
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//
+//struct s2
+//{
+//	char c1;
+//	char c2;
+//	int i;
+//	//0
+//	//1
+//	//4
+//	//8
+//};
+//struct s3
+//{
+//	//7
+//	//8
+//	//12
+//	//16
+//	double d;
+//	char c;
+//	int i;
+//};
+//struct s4
+//{
+//	//0
+//	//4
+//	//8
+//	float d;
+//	char c;
+//	int i;
+//};
+//struct s5
+//{
+//	//0
+//	//8
+//	//9
+//	//11
+//	//15
+//	//22
+//	//24
+//	char c1;
+//	struct s3 s3;
+//	double d;
+//};
+//int main()
+//{
+//	printf("%zd\n", sizeof(struct s1));
+//	printf("%zd\n", sizeof(struct s2));
+//	printf("%zd\n", sizeof(struct s3));
+//	printf("%zd\n", sizeof(struct s4));
+//	printf("%zd\n", sizeof(struct s5));
+//	printf("%zd\n", offsetof(struct s1, c1));
+//	printf("%zd\n", offsetof(struct s1, i));
+//	printf("%zd\n", offsetof(struct s1, c2));
+//	printf("%zd\n", offsetof(struct s2, c1));
+//	printf("%zd\n", offsetof(struct s2, c2));
+//	printf("%zd\n", offsetof(struct s2, i));
+//	printf("%zd\n", offsetof(struct s3, d));
+//	printf("%zd\n", offsetof(struct s3, c));
+//	printf("%zd\n", offsetof(struct s3, i));
+//	printf("%zd\n", offsetof(struct s4, d));
+//	printf("%zd\n", offsetof(struct s4, c));
+//	printf("%zd\n", offsetof(struct s4, i));
+//	return 0;
+//}
+
 
 
 //修改默认对齐数
