@@ -358,6 +358,30 @@
 //	return 0;
 //}
 
+//#include<stddef.h>
+//#include<stdio.h>
+//typedef struct s1
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//}s1;
+//struct s2
+//{
+//	char c1;
+//	s1 s1;
+//	int c2[5];
+//};
+//int main()
+//{
+//	printf("%zd\n", sizeof(struct s2));
+//	printf("%zd\n", offsetof(struct s2, c1));
+//	printf("%zd\n", offsetof(struct s1, i));
+//	printf("%zd\n", offsetof(struct s1, c2));
+//	printf("%zd\n", offsetof(struct s2, c2));
+//	return 0;
+//}
+
 
 //#include<stdio.h>
 //#include<stddef.h>
@@ -438,11 +462,10 @@
 //}
 
 
-
 //修改默认对齐数
 //#include<stdio.h>
 //#include<stddef.h>
-//#pragma pack(1) // 修改默认对齐数为4
+//#pragma pack(1) // 修改默认对齐数为1
 //struct s1
 //{
 //	//0
