@@ -67,3 +67,9 @@ void check_capacity(contact* pc);
 
 //销毁通讯录
 void DestoryContact(contact* pc);
+
+//保存通讯录中的信息到文件中
+void SaveContact(contact* pc);
+
+//加载文件信息到通讯录
+void LoadContact(contact* pc);

@@ -948,6 +948,37 @@
 //}
 
 
+//#include<stdio.h>
+//#include<assert.h>
+//void* my_memcpy(void* dest, const void* src, size_t num)
+//{
+//	assert(dest && src);
+//	void* ret = dest;
+//	while (num--)
+//	{
+//		*(char*)dest = *(char*)src;
+//		dest = (char*)dest + 1;
+//		src = (char*)src + 1;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int arr2[10] = { 0 };
+//	int num = 10;
+//	int i = 0;
+//	my_memcpy(arr2, arr1, num * sizeof(arr1[0]));
+//	for (i = 0;i < 10;i++)
+//	{
+//		printf("%d ", arr2[i]);
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+
+
 //ÖØµþ
 //#include<stdio.h>
 //#include<string.h>
@@ -993,6 +1024,30 @@
 //	for (i = 0;i < 10;i++)
 //	{
 //		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <string.h>
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int arr2[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int num = 5;
+//	int i = 0;
+//	memcpy(arr1 + 2, arr1, num * sizeof(arr1[0]));
+//	memmove(arr2 + 2, arr2, num * sizeof(arr2[0]));
+//	for (i = 0;i < 10;i++)
+//	{
+//		printf("%d ", arr1[i]);
+//	}
+//	printf("\n");
+//	for (i = 0;i < 10;i++)
+//	{
+//		printf("%d ", arr2[i]);
 //	}
 //	printf("\n");
 //	return 0;
