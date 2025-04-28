@@ -116,7 +116,29 @@
 //}
 
 
-//fgets
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	FILE* pf = fopen("test.txt", "r");//根目录,test.c文件的位置
+	if (pf == NULL)
+	{
+		perror("fopen");
+		return 1;
+	}
+	char arr[20]= { 0 };
+	fgets(arr, 19, pf);
+	printf("%s", arr);
+	fgets(arr, 19, pf);
+	printf("%s", arr);
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
+
+
+//fputs
 //#include <stdio.h>
 //#include <string.h>
 //int main()
