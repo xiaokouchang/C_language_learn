@@ -316,6 +316,27 @@
 //}
 
 
+//#include<stdio.h>
+//int main()
+//{
+//	FILE* pf = fopen("test.txt", "w");
+//	if (pf == NULL)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//	int i = 0;
+//	for (i = 0;i < 6;i++)
+//	{
+//		char c = 'A' + i;
+//		fputc(c, pf);
+//	}
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+
 //文件的随机读写
 //fseek
 //#include<stdio.h>
@@ -336,7 +357,7 @@
 //		ch = fgetc(pf);
 //		printf("%c\n", ch);
 //		//fseek(pf, -2, SEEK_CUR);
-//		fseek(pf, 1, SEEK_SET);
+//		fseek(pf, 0, SEEK_SET);
 //		ch = fgetc(pf);
 //		printf("%c\n", ch);
 //		fclose(pf);
