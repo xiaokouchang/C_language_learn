@@ -73,3 +73,12 @@ void SaveContact(contact* pc);
 
 //加载文件信息到通讯录
 void LoadContact(contact* pc);
+
+//姓名排序
+int cmp_contact_by_name(const void* e1, const void* e2);
+
+//年龄排序
+int cmp_contact_by_age(const void* e1, const void* e2);
+
+//电话排序
+int cmp_contact_by_tele(const void* e1, const void* e2);
