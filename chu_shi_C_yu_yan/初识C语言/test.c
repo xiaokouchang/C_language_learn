@@ -45,6 +45,14 @@
 //}
 
 
+//#include<stdio.h>
+//int main()
+//{
+//	printf("%x\n", 32);
+//	return 0;
+//}
+
+
 //字符串-----%s打印
 //'a'
 //"abcdef"
@@ -92,15 +100,26 @@
 //}
 
 
-//#include<stdio.h>
+//#include <stdio.h>
 //int main()
 //{
+//	printf("%.2f\n", 0.5);
+//	printf("%6.2f\n", 0.5);
+//	printf("%-6.2f\n", 0.5);
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//int main()
+//{	
 //	printf("abcdef\bx\n");//覆盖掉原有的值
 //	printf("abcdefghijkl\n");
 //	printf("a\tbcdef\tghijkl\n");
+//	// \t表示占8个字符,包括前面的字符,a是1个字符后面有\t填充7个空格
 //	printf("zhangsan\t20\n");// \t ---- 产生内容上的对齐
 //	printf("lisi\t\t30\n");
-//	getchar();
+//	//getchar();
 //	return 0;
 //}
 
@@ -115,6 +134,18 @@
 //{
 //	printf("%c\n", '\130');//8进制的数字转化为10进制,然后对应相应的ASCII码
 //	printf("%c\n", '\x30');//16进制的数字转化为10进制,然后对应相应的ASCII码
+//	return 0;
+//}
+
+
+//#include<stdio.h>
+//int main()
+//{
+//	int a, b, c;
+//	float d, e;
+//	char r;
+//	scanf("%*f %*f %d", &c);
+//	printf("%d\n", c);
 //	return 0;
 //}
 
@@ -155,3 +186,10 @@
 //}
 
 
+//#include <stdio.h>
+//int main()
+//{
+//	printf("%5d\n", 123);//默认右对齐
+//	printf("%-5d\n", 123);//左对齐
+//	return 0;
+//}
